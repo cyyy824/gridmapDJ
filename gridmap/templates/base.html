@@ -1,0 +1,62 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}{% endblock %}
+    <!-- Bootstrap core CSS -->
+<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-dark sticky-top bg-dark mb-5">
+        <div class="navbar-header ">
+            <a class="navbar-brand navbar-logo" href="/">网格化</a>
+        </div>
+ 
+      </nav>
+      
+      <div class="container-fluid">
+        <div class="row">
+          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse mt-5">
+            <div class="sidebar-sticky pt-3">
+                {% block sidebar %}{% endblock %}
+            </div>
+          </nav>
+      
+          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            {% block imagearea %}
+            {% endblock %}
+          </main>
+        </div>
+      </div>
+
+      
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/dashboard.js"></script>
+{% block addscript %}{% endblock %}
+      
+  </body>
+</html>

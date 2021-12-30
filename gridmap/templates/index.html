@@ -1,0 +1,30 @@
+{%extends "base.html" %}
+{% block head %}
+{{map.header.render|safe}}
+{% endblock %}
+
+{% block sidebar %}
+    <h2>保税港区网格化明细</h2>
+
+    <div>
+        <ul>
+            {% for gn in gridnodes %}
+            <li><a href="/gn/{{ gn.id }}">{{ gn.name }}</a></li> 
+            {% endfor %}
+        </ul>
+    </div>
+    
+{% endblock %}
+
+{% block imagearea %}
+    <div style="width:100%; height:600px">
+    {{map.html.render|safe}}
+    </div>
+{% endblock %}
+
+
+{% block addscript %}
+<script>
+    {{map.script.render|safe}}
+  </script>
+{% endblock %}

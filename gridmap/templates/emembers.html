@@ -1,0 +1,51 @@
+{%extends "base.html" %}
+ 
+{% block sidebar %}
+    <h2>{{ gridnode.name }}</h2>
+
+    <div>
+        <h3>网格员：</h3>
+        <ul>
+           {% for member in members.all %}
+           <li>{{member.name}},{{member.mobile}}</li>
+           {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <h3>支撑项：</h3>
+        <ul class="list-group">
+            <li class="list-group-item">派出所：{{ support.police }}</li>
+            <li class="list-group-item">医院：{{ support.hospital }}</li>
+            <li class="list-group-item">消防队：{{ support.firestation }}</li>
+            <li class="list-group-item">街道：{{ support.subdistrict }}</li>
+            <li class="list-group-item">设备数：{{ support.facilitie }}</li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block imagearea %}
+    <div class="p-5">
+        <div>
+        <h3>网格员：</h3>
+        <ul>
+        {% for member in members.all %}
+           <li width="100%">{{member.name}},{{member.mobile}}
+            <form action="/dmember" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="memberid" value="{{member.id}}" >
+                <input type="submit" value="删除">
+            </form>
+            </li>
+           {% endfor %}
+        </ul>
+        </div>
+        <form action="/emembers/{{ gridnode.id }}" method="post">
+            <table>
+            {% csrf_token %}
+            {{ form }}
+        </table>
+            <input type="submit" value="提交">
+        </form>
+    </div>
+{% endblock %}
+
